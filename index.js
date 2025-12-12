@@ -215,7 +215,7 @@ function checkLocation(person) {
 function savePath(person) {
   if (person.hasSymptons == true) return;
   if (isGameStart == false)
-    person.path = person.path.filter((_, i) => person.path.length - i < 30);
+    person.path = person.path.filter((_, i) => person.path.length - i < 15);
   person.path.push(person.currentTile);
 }
 
