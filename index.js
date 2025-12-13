@@ -42,7 +42,7 @@ function animate() {
   }
 
   // draw locations (to do)
-  animationId = requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
 }
 
 function drawBackground() {
