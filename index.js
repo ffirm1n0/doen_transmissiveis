@@ -26,9 +26,9 @@ function animate() {
       checkFocusLocation(person);
 
       checkSymptons(person);
+      reduceThreshold(person);
 
       savePath(person);
-      saveVisitedLocations(person);
       findNextTile(person);
     }
 
@@ -134,6 +134,7 @@ function drawBackground() {
       // if (locationsMap[row][col] == selectedLocationId) ctx.fillStyle = "#f00";
       // else ctx.fillStyle = "#000";
 
+      ctx.fillStyle = "#000";
       ctx.textAlign = "center";
       ctx.fillText(
         locationsMap[row][col],
@@ -215,11 +216,12 @@ function checkLocation(person) {
 function savePath(person) {
   if (person.hasSymptons == true) return;
   if (isGameStart == false)
-    person.path = person.path.filter((_, i) => person.path.length - i < 15);
+    person.path = person.path.filter((_, i) => person.path.length - i < 20);
   person.path.push(person.currentTile);
 }
 
-function saveVisitedLocations(person) {
+// reduce threshold every time person visits new location after focus location 
+function reduceThreshold(person) {
   if (person.isInfected == false) return;
   if (person.hasSymptons == true) return;
   const { row, col } = person.currentTile;
@@ -227,7 +229,9 @@ function saveVisitedLocations(person) {
 
   if (locationId == null || locationId == selectedLocationId) return;
   if (person.visitedLocations.includes(locationId)) return;
+
   person.visitedLocations.push(locationId);
+  person.onsetThreshold -= 0.2;
 }
 
 function checkFocusLocation(person) {
@@ -254,7 +258,7 @@ function checkSymptons(person) {
   const locationId = locationsMap[row][col];
 
   if (locationId == null) return;
-  if (person.visitedLocations.includes(selectedLocationId)) return;
+  // if (person.visitedLocations.includes(selectedLocationId)) return;
 
   const risk = Math.random();
   // console.log("-------");
@@ -268,8 +272,6 @@ function checkSymptons(person) {
     // console.log(person.path);
     // setTimeout(() => notifyCase(person), Math.random() * 5000);
   }
-
-  person.onsetThreshold -= 0.2;
 }
 
 function notifyCase(person) {
@@ -428,6 +430,11 @@ function prepareGame() {
     person.hasSymptons = false;
     person.path = [];
     person.visitedLocations = [];
+
+    do {
+      savePath(person);
+      findNextTile(person);
+    } while (person.path.length < 20);
   }
 
   selectedLocationId = Math.floor(
