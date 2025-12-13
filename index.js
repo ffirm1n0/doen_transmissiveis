@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 const mapImg = new Image();
 mapImg.src = "./assets/map.jpeg";
 
-let isGameStart = false; // (to do: false)
+let isGameStart = false;
 let lastFrameTime = performance.now();
 
 let selectedLocationId, selectedDiseaseId;
@@ -18,6 +18,11 @@ function animate() {
 
   for (let i = 0; i < people.length; i++) {
     const person = people[i];
+
+    if (playerMenu.pause == true) {
+      drawPerson(person);
+      continue;
+    }
 
     if (person.isInLocation == true) continue;
 
@@ -37,7 +42,7 @@ function animate() {
   }
 
   // draw locations (to do)
-  requestAnimationFrame(animate);
+  animationId = requestAnimationFrame(animate);
 }
 
 function drawBackground() {
@@ -220,7 +225,7 @@ function savePath(person) {
   person.path.push(person.currentTile);
 }
 
-// reduce threshold every time person visits new location after focus location 
+// reduce threshold every time person visits new location after focus location
 function reduceThreshold(person) {
   if (person.isInfected == false) return;
   if (person.hasSymptons == true) return;
