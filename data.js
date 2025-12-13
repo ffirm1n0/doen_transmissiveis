@@ -620,4 +620,12 @@ const people = [
   { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
   { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
   { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
+  { name: crypto.randomUUID(), age: Math.floor(Math.random() * 50 + 20) },
 ];
