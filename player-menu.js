@@ -70,14 +70,37 @@ function showCasesList() {
 }
 
 function togglePath(diseaseCase) {
+diseaseCase.isSelected = !diseaseCase.isSelected;
+
+  // procura o caminho correspondente
+  const path = document.querySelector(
+    `.case-path[data-case-id="${diseaseCase.id}"]`
+  );
+
+  if (!path) {
+    console.warn("Caminho não encontrado:", diseaseCase.id);
+    return;
+  }
+
+  // mostra ou esconde
+  path.style.display = diseaseCase.isSelected ? "block" : "none";
+
+  // atualiza a lista
   showCasesList();
   alert("sss");
 }
 
 function showCaseDetail(diseaseCase) {
   const caseDetail = document.querySelector(".case-detail");
+   const caseDetail = document.querySelector(".case-detail");
+  caseDetail.style.display = "block";
+
   caseDetail.innerHTML = `
     <div></div>
+    <h3>Detalhes do Caso</h3>
+    <p>Nome: ${diseaseCase.name}</p>
+    <p>Descrição: ${diseaseCase.description}</p>
+    <p>Idade: ${diseaseCase.age}</p>
   `;
 }
 //////////////////////////////////////////////////////
