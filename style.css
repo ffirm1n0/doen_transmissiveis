@@ -171,18 +171,103 @@ canvas:hover {
   border-top: 0.5vw solid #8f8f8f;
 }
 
+/* folha de resposta */
 .answer-menu {
-  height: 90vh;
-  width: 40vw;
-  background-color: red;
+  font-family: "Press Start 2P", system-ui;
+  /* center on screen */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  max-height: 90vh;
+  width: 50vw;
+  background-color: white;
+  border: 1px solid black;
+  overflow: auto;
+}
+
+#answerLeaf {
+  position: relative; 
+  padding: 2rem;
+}
+
+/* .answerMenu:hover {
+  transform: scale(1.1);
+} */
+
+#closeAnswer {
+  font-family: "Press Start 2P", system-ui;
+  position: relative;
+  bottom: 0.5rem;  
+  right: 1rem;  
+  border-right: 0.5vw solid #0f0f0f;
+  border-bottom: 0.5vw solid #0f0f0f;
+  border-left: 0.5vw solid #5f5f5f;
+  border-top: 0.5vw solid #8f8f8f;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.5rem;
 }
 
 .manual-menu {
   height: 90vh;
   width: 66vw;
-  background-color: red;
+  background-color: white;
+  border-right: 0.5vw solid #0f0f0f;
+  border-bottom: 0.5vw solid #0f0f0f;
+  border-left: 0.5vw solid #5f5f5f;
+  border-top: 0.5vw solid #8f8f8f;
 }
 
 .hide {
   display: none;
+}
+
+
+#lists-container {
+  font-family: "Press Start 2P", system-ui;
+  display: flex; 
+  justify-content: space-between; 
+}
+
+#diseases-list, #locations-list {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+  width: 45%; 
+  font-size: 0.5rem;
+  cursor: pointer;
+}
+
+#diseases-list li, #locations-list li {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+#diseases-list li span.riscado,
+#locations-list li span.riscado {
+  text-decoration: line-through;
+  color: #999;
+}
+
+#diseases-list li span.marcatexto,
+#locations-list li span.marcatexto {
+  background-color: rgb(230, 192, 22);
+  padding: 0px 4px;
+  display: inline-block;
+}
+
+#diseases-list li span.confirmacao,
+#locations-list li span.confirmacao {
+  background-color: red;
+  padding: 0px 4px;
+  display: inline-block;
+  text-decoration: line-through;
+  color: white;
+}
+
+#diseases-list li span,
+#locations-list li span {
+  cursor: pointer;
 }
