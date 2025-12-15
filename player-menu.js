@@ -155,14 +155,29 @@ function setPlayerMenuLimit(menuType, menu) {
     menuPos.y = 0.95 * window.innerHeight;
 }
 
+let menuLayer = [];
+
+function setMenuLayer(menuType) {
+  if (menuLayer.length >= 3)
+    menuLayer = menuLayer.filter((layer) => !(layer == menuType));
+  menuLayer.push(menuType);
+
+  menuLayer.forEach((layer, index) => {
+    const menu = document.querySelector(`.${layer}-menu`);
+    menu.style.zIndex = index;
+  });
+}
+
 function startDragPlayerMenu(event) {
   const { clientX, clientY } = event;
   mouseStartPos.x = clientX;
   mouseStartPos.y = clientY;
   isDragginPlayerMenu = true;
 }
+
 function dragPlayerMenu(event, menuType) {
   if (isDragginPlayerMenu == false) return;
+  setMenuLayer(menuType);
 
   const { clientX, clientY } = event;
 

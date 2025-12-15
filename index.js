@@ -314,6 +314,7 @@ function notifyCase(person) {
 
   newCaseCount += 1;
   showNewCaseCount();
+  if (!casesMenu.classList.contains("hide")) showCasesList();
 }
 
 function findNextTile(person) {
