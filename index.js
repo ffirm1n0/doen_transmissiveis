@@ -19,7 +19,7 @@ function animate() {
   for (let i = 0; i < people.length; i++) {
     const person = people[i];
 
-    if (playerMenuState.pause == true) {
+    if (isGamePause == true) {
       drawPerson(person);
       continue;
     }
