@@ -22,11 +22,20 @@ function togglePause() {
   if (isGamePause == true) icon.src = "assets/icons/pause.png";
   else icon.src = "assets/icons/play.png";
 
-  console.log(isGamePause);
   isGamePause = !isGamePause;
-  console.log(isGamePause);
 }
 //////////////////////////////////////////////////////
+function showNewCaseCount() {
+  const newCaseCounter = document.querySelector(".new-case-counter");
+  if (newCaseCount == 0) {
+    newCaseCounter.classList.add("hide");
+    return;
+  }
+
+  newCaseCounter.classList.remove("hide");
+  newCaseCounter.innerHTML = newCaseCount;
+}
+
 function toggleCases() {
   const icon = document.querySelector(".cases-btn img");
 
@@ -44,6 +53,9 @@ function toggleCases() {
 }
 
 function showCasesList() {
+  newCaseCount = 0;
+  showNewCaseCount();
+
   const casesList = document.querySelector(".cases-list");
   casesList.innerHTML = "";
 

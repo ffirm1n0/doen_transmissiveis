@@ -9,6 +9,7 @@ let lastFrameTime = performance.now();
 
 let selectedLocationId, selectedDiseaseId;
 const cases = [];
+let newCaseCount = 0;
 
 function animate() {
   const deltaTime = getDeltaTime();
@@ -310,6 +311,9 @@ function notifyCase(person) {
     path: [...path],
     color: getRandomColor(),
   });
+
+  newCaseCount += 1;
+  showNewCaseCount();
 }
 
 function findNextTile(person) {
