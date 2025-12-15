@@ -87,16 +87,13 @@ diseaseCase.isSelected = !diseaseCase.isSelected;
 
   // atualiza a lista
   showCasesList();
-  alert("sss");
 }
 
 function showCaseDetail(diseaseCase) {
-  const caseDetail = document.querySelector(".case-detail");
    const caseDetail = document.querySelector(".case-detail");
   caseDetail.style.display = "block";
 
   caseDetail.innerHTML = `
-    <div></div>
     <h3>Detalhes do Caso</h3>
     <p>Nome: ${diseaseCase.name}</p>
     <p>Descrição: ${diseaseCase.description}</p>
